@@ -16,25 +16,36 @@ namespace WindowsFormsApp3
         {
             InitializeComponent();
         }
-        Auto auticko = new Auto("značka", 1);
+        Auto auticko;
         private void button1_Click(object sender, EventArgs e)
         {
-            auticko.CelkovaSpotreba((int)numericUpDown1.Value);
             MessageBox.Show(auticko.ToString());
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             button2.Enabled = true;
-            button3.Enabled = false;           
+            button3.Enabled = false;
             auticko.Zastav((int)numericUpDown2.Value);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            button2.Enabled = false; 
+            button2.Enabled = false;
             button3.Enabled = true;
             auticko.Rozjed();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            auticko = new Auto(textBox1.Text, (int)numericUpDown1.Value);
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button4.Enabled = false;
+            textBox1.Enabled = false;
+            numericUpDown1.Enabled = false;
+            numericUpDown2.Enabled = true;
+            MessageBox.Show("Auto značky " + textBox1.Text + ", se spotřebou " + numericUpDown1.Value + "l/100 km, bylo vytvořeno.");
         }
     }
 }
